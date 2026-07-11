@@ -10,10 +10,8 @@ import org.joml.Vector3f;
 public class RenderUtils {
 
     /**
-     * Render a line between two points in 3D space
-     */
-    public static void drawLine(VertexConsumer vertexConsumer, Matrix4f matrix, 
-                               Vec3d start, Vec3d end, int color) {
+public static void drawLine(VertexConsumer vertexConsumer, Matrix4f matrix,
+                                Vec3d start, Vec3d end, int color) {
         float r = ((color >> 16) & 0xFF) / 255.0f;
         float g = ((color >> 8) & 0xFF) / 255.0f;
         float b = (color & 0xFF) / 255.0f;
@@ -23,14 +21,9 @@ public class RenderUtils {
         Vector3f startVec = new Vector3f((float) start.x, (float) start.y, (float) start.z);
         Vector3f endVec = new Vector3f((float) end.x, (float) end.y, (float) end.z);
 
-        vertexConsumer.vertex(matrix, startVec.x, startVec.y, startVec.z)
-            .color(r, g, b, a)
-            .next();
-        vertexConsumer.vertex(matrix, endVec.x, endVec.y, endVec.z)
-            .color(r, g, b, a)
-            .next();
+        vertexConsumer.vertex(matrix, startVec.x, startVec.y, startVec.z).color(r, g, b, a).endVertex();
+        vertexConsumer.vertex(matrix, endVec.x, endVec.y, endVec.z).color(r, g, b, a).endVertex();
     }
-
     /**
      * Draw a box in 3D space
      */

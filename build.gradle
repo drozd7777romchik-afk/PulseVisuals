@@ -39,7 +39,7 @@ java {
 
 jar {
     from("LICENSE") {
-        rename it, "LICENSE_${archives_base_name}"
+        rename { String filename -> filename == 'LICENSE_pulsevisuals' ? 'LICENSE' : filename }
     }
 }
 
